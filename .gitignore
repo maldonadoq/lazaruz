@@ -7,3 +7,5 @@
 *.ppu
 *.compiled
 *.or
+**/lib/*
+**/backup/*
