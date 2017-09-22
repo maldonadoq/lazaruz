@@ -1,0 +1,9 @@
+#lazarus
+*.xml
+*.ico
+*.lps
+*.res
+*.o
+*.ppu
+*.compiled
+*.or

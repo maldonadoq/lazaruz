@@ -1,0 +1,22 @@
+object Form1: TForm1
+  Left = 495
+  Height = 320
+  Top = 221
+  Width = 492
+  Caption = '                      Calculadora Casio'
+  ClientHeight = 320
+  ClientWidth = 492
+  LCLVersion = '1.8.0.4'
+  object Disp: TEdit
+    Left = 55
+    Height = 42
+    Top = 20
+    Width = 377
+    BidiMode = bdRightToLeft
+    Font.Height = -27
+    ParentBidiMode = False
+    ParentFont = False
+    TabOrder = 0
+    Text = '0'
+  end
+end

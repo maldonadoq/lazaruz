@@ -1,0 +1,369 @@
+object Form1: TForm1
+  Left = 106
+  Height = 345
+  Top = 163
+  Width = 1182
+  Caption = 'Form1'
+  ClientHeight = 345
+  ClientWidth = 1182
+  Menu = MainMenu1
+  LCLVersion = '1.8.0.4'
+  object MA: TGroupBox
+    Left = 0
+    Height = 345
+    Top = 0
+    Width = 300
+    Align = alLeft
+    ClientHeight = 343
+    ClientWidth = 298
+    TabOrder = 0
+    object MMA: TStringGrid
+      Left = 0
+      Height = 293
+      Top = 50
+      Width = 298
+      Align = alClient
+      AutoFillColumns = True
+      ColCount = 1
+      FixedCols = 0
+      FixedRows = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAlwaysShowEditor, goSmoothScroll]
+      RowCount = 1
+      TabOrder = 0
+      ColWidths = (
+        296
+      )
+    end
+    object DMA: TPanel
+      Left = 0
+      Height = 50
+      Top = 0
+      Width = 298
+      Align = alTop
+      ClientHeight = 50
+      ClientWidth = 298
+      TabOrder = 1
+      object CMA: TButton
+        Left = 208
+        Height = 25
+        Top = 12
+        Width = 75
+        Caption = 'OK'
+        OnClick = CMAClick
+        TabOrder = 0
+      end
+      object RA: TEdit
+        Left = 48
+        Height = 29
+        Top = 8
+        Width = 50
+        TabOrder = 1
+      end
+      object CA: TEdit
+        Left = 136
+        Height = 29
+        Top = 8
+        Width = 50
+        TabOrder = 2
+      end
+      object LRA: TLabel
+        Left = 24
+        Height = 17
+        Top = 15
+        Width = 19
+        Caption = 'RA'
+        ParentColor = False
+      end
+      object LCA: TLabel
+        Left = 112
+        Height = 17
+        Top = 15
+        Width = 19
+        Caption = 'CA'
+        ParentColor = False
+      end
+    end
+  end
+  object MB: TGroupBox
+    Left = 300
+    Height = 345
+    Top = 0
+    Width = 300
+    Align = alLeft
+    ClientHeight = 343
+    ClientWidth = 298
+    TabOrder = 1
+    object MMB: TStringGrid
+      Left = 0
+      Height = 293
+      Top = 50
+      Width = 298
+      Align = alClient
+      AutoFillColumns = True
+      ColCount = 1
+      FixedCols = 0
+      FixedRows = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAlwaysShowEditor, goSmoothScroll]
+      RowCount = 1
+      TabOrder = 0
+      ColWidths = (
+        296
+      )
+    end
+    object DMB: TPanel
+      Left = 0
+      Height = 50
+      Top = 0
+      Width = 298
+      Align = alTop
+      ClientHeight = 50
+      ClientWidth = 298
+      TabOrder = 1
+      object CMB: TButton
+        Left = 208
+        Height = 25
+        Top = 12
+        Width = 75
+        Caption = 'OK'
+        OnClick = CMBClick
+        TabOrder = 0
+      end
+      object RB: TEdit
+        Left = 48
+        Height = 29
+        Top = 8
+        Width = 50
+        TabOrder = 1
+      end
+      object CB: TEdit
+        Left = 144
+        Height = 29
+        Top = 8
+        Width = 50
+        TabOrder = 2
+      end
+      object LRB: TLabel
+        Left = 16
+        Height = 17
+        Top = 15
+        Width = 19
+        Caption = 'RB'
+        ParentColor = False
+      end
+      object LCB: TLabel
+        Left = 120
+        Height = 17
+        Top = 15
+        Width = 19
+        Caption = 'CB'
+        ParentColor = False
+      end
+    end
+  end
+  object RS: TGroupBox
+    Left = 600
+    Height = 345
+    Top = 0
+    Width = 582
+    Align = alClient
+    ClientHeight = 343
+    ClientWidth = 580
+    TabOrder = 2
+    object OMenu: TPanel
+      Left = 0
+      Height = 114
+      Top = 0
+      Width = 580
+      Align = alTop
+      ClientHeight = 114
+      ClientWidth = 580
+      TabOrder = 0
+      object Sum: TButton
+        Left = 16
+        Height = 25
+        Top = 46
+        Width = 75
+        Caption = '+'
+        OnClick = SumClick
+        TabOrder = 0
+      end
+      object Res: TButton
+        Left = 16
+        Height = 25
+        Top = 80
+        Width = 75
+        Caption = '-'
+        OnClick = ResClick
+        TabOrder = 1
+      end
+      object Pro: TButton
+        Left = 120
+        Height = 25
+        Top = 12
+        Width = 75
+        Caption = '*'
+        OnClick = ProClick
+        TabOrder = 2
+      end
+      object InvA: TButton
+        Left = 229
+        Height = 25
+        Top = 80
+        Width = 75
+        Caption = 'Inv A'
+        OnClick = InvAClick
+        TabOrder = 3
+      end
+      object TraA: TButton
+        Left = 120
+        Height = 25
+        Top = 46
+        Width = 75
+        Caption = 'Trans A'
+        OnClick = TraAClick
+        TabOrder = 4
+      end
+      object DetA: TButton
+        Left = 232
+        Height = 25
+        Top = 12
+        Width = 75
+        Caption = 'Det A'
+        OnClick = DetAClick
+        TabOrder = 5
+      end
+      object TraB: TButton
+        Left = 120
+        Height = 25
+        Top = 80
+        Width = 75
+        Caption = 'Trans B'
+        OnClick = TraBClick
+        TabOrder = 6
+      end
+      object Ran: TButton
+        Left = 16
+        Height = 25
+        Top = 12
+        Width = 75
+        Caption = 'Random'
+        OnClick = RanClick
+        TabOrder = 7
+      end
+      object DetB: TButton
+        Left = 229
+        Height = 25
+        Top = 48
+        Width = 75
+        Caption = 'Det B'
+        OnClick = DetBClick
+        TabOrder = 8
+      end
+      object InvB: TButton
+        Left = 336
+        Height = 25
+        Top = 12
+        Width = 75
+        Caption = 'Inv B'
+        OnClick = InvBClick
+        TabOrder = 9
+      end
+      object PTB: TButton
+        Left = 336
+        Height = 25
+        Top = 48
+        Width = 75
+        Caption = 'P-B'
+        OnClick = PTBClick
+        TabOrder = 10
+      end
+      object Pow: TButton
+        Left = 448
+        Height = 25
+        Top = 12
+        Width = 43
+        Caption = 'Pow'
+        OnClick = PowClick
+        TabOrder = 11
+      end
+      object Pw: TEdit
+        Left = 504
+        Height = 29
+        Top = 8
+        Width = 40
+        TabOrder = 12
+      end
+      object AdA: TButton
+        Left = 336
+        Height = 25
+        Top = 80
+        Width = 75
+        Caption = 'Adj A'
+        OnClick = AdAClick
+        TabOrder = 13
+      end
+      object Esc: TButton
+        Left = 444
+        Height = 25
+        Top = 46
+        Width = 44
+        Caption = 'Esc'
+        OnClick = EscClick
+        TabOrder = 14
+      end
+      object TEs: TEdit
+        Left = 504
+        Height = 29
+        Top = 46
+        Width = 40
+        TabOrder = 15
+      end
+    end
+    object MMRS: TStringGrid
+      Left = 0
+      Height = 229
+      Top = 114
+      Width = 580
+      Align = alClient
+      AutoFillColumns = True
+      ColCount = 1
+      FixedCols = 0
+      FixedRows = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAlwaysShowEditor, goSmoothScroll]
+      RowCount = 1
+      TabOrder = 1
+      ColWidths = (
+        578
+      )
+    end
+  end
+  object MainMenu1: TMainMenu
+    left = 148
+    top = 130
+    object Archivo: TMenuItem
+      Caption = 'Archivo'
+      object Abrir: TMenuItem
+        Caption = 'Abrir'
+        OnClick = AbrirClick
+      end
+      object Guardar: TMenuItem
+        Caption = 'Guardar'
+        OnClick = GuardarClick
+      end
+      object MenuItem4: TMenuItem
+        Caption = '-'
+      end
+      object Salir: TMenuItem
+        Caption = 'Salir'
+        OnClick = SalirClick
+      end
+    end
+    object Info: TMenuItem
+      Caption = 'Acerca de ..'
+      object Autor: TMenuItem
+        Caption = 'Autor'
+        OnClick = AutorClick
+      end
+    end
+  end
+end
