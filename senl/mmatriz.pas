@@ -31,6 +31,7 @@ type
         function Invers(): TMatriz;
         function Adjunta(): TMatriz;
         function Esc(a: real): TMatriz;
+        procedure Print();
         procedure Dlu(l,u: TMatriz);
         function Se(l,u: TMatriz; s: array of real): vect;
         function Sol(l,u: TMatriz; s: array of real): vect;
@@ -86,6 +87,17 @@ begin
      end;
      Result:= (Power(-1,r+c))*(MT.Det().D);
      MT.Destroy();
+end;
+
+procedure TMatriz.Print();
+var i,j: integer;
+begin
+     for i:=0 to Self.x-1 do begin
+         for j:=0 to Self.y-1 do begin
+             Write(FloatToStr(Self.m[i,j])+' ');
+         end;
+         Write(LineEnding);
+     end;
 end;
 
 function TMatriz.Det(): RD;

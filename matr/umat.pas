@@ -217,7 +217,8 @@ begin
     if (Z.T = False) or (Z.D = 0) then
        ShowMessage('No tiene Inversa')
     else begin
-       MATR:= MATA.Inverse(Z.D);
+       //MATR:= MATA.Inverse(Z.D);
+       MATR:= MATA.Invers();
        ShowM(MATR);
     end;
 end;
@@ -230,7 +231,8 @@ begin
     if (Z.T = False) or (Z.D = 0) then
        ShowMessage('No tiene Inversa')
     else begin
-       MATR:= MATB.Inverse(Z.D);
+       //MATR:= MATB.Inverse(Z.D);
+       MATR:= MATB.Invers();
        ShowM(MATR);
     end;
 end;

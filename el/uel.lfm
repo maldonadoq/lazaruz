@@ -1,21 +1,21 @@
 object Form1: TForm1
-  Left = 465
+  Left = 318
   Height = 323
-  Top = 275
-  Width = 862
+  Top = 246
+  Width = 893
   Caption = 'Form1'
   ClientHeight = 323
-  ClientWidth = 862
+  ClientWidth = 893
   OnCreate = FormCreate
-  LCLVersion = '1.6.4.0'
+  LCLVersion = '1.8.0.4'
   object Men: TPanel
     Left = 0
     Height = 82
     Top = 0
-    Width = 862
+    Width = 893
     Align = alTop
     ClientHeight = 82
-    ClientWidth = 862
+    ClientWidth = 893
     TabOrder = 0
     object Label1: TLabel
       Left = 56
@@ -34,7 +34,7 @@ object Form1: TForm1
       ParentColor = False
     end
     object Bis: TButton
-      Left = 344
+      Left = 320
       Height = 25
       Top = 24
       Width = 80
@@ -75,7 +75,7 @@ object Form1: TForm1
       Text = '0'
     end
     object FaP: TButton
-      Left = 464
+      Left = 432
       Height = 25
       Top = 24
       Width = 88
@@ -84,7 +84,7 @@ object Form1: TForm1
       TabOrder = 4
     end
     object Newt: TButton
-      Left = 592
+      Left = 552
       Height = 25
       Top = 24
       Width = 75
@@ -93,7 +93,7 @@ object Form1: TForm1
       TabOrder = 5
     end
     object Sec: TButton
-      Left = 707
+      Left = 664
       Height = 25
       Top = 24
       Width = 75
@@ -101,12 +101,21 @@ object Form1: TForm1
       OnClick = SecClick
       TabOrder = 6
     end
+    object Fix: TButton
+      Left = 784
+      Height = 25
+      Top = 24
+      Width = 75
+      Caption = 'Fixed P'
+      OnClick = FixClick
+      TabOrder = 7
+    end
   end
   object Tab: TStringGrid
     Left = 0
     Height = 241
     Top = 82
-    Width = 862
+    Width = 893
     Align = alClient
     AutoFillColumns = True
     ColCount = 1
@@ -114,7 +123,7 @@ object Form1: TForm1
     RowCount = 1
     TabOrder = 1
     ColWidths = (
-      860
+      891
     )
   end
 end

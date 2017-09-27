@@ -45,8 +45,8 @@ begin
      h:= h/10;
      x[n-1]:= x[n-1]+h;
      Result:= f(x);
-     h:= 2*h;
      x[n-1]:= x[n-1]-h;
+     h:= 2*h;
      Result:= (Result-f(x))/h;
 end;
 

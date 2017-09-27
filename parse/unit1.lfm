@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 353
+  Left = 350
   Height = 364
-  Top = 293
+  Top = 278
   Width = 925
   Caption = 'Form1'
   ClientHeight = 364
@@ -37,7 +37,7 @@ object Form1: TForm1
       Left = 64
       Height = 17
       Top = 32
-      Width = 55
+      Width = 43
       Caption = 'Funcion'
       ParentColor = False
     end

@@ -14,6 +14,7 @@ type
 
   TForm1 = class(TForm)
     Bis: TButton;
+    Fix: TButton;
     FaP: TButton;
     Newt: TButton;
     Sec: TButton;
@@ -26,6 +27,7 @@ type
     Men: TPanel;
     Tab: TStringGrid;
     procedure FaPClick(Sender: TObject);
+    procedure FixClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BisClick(Sender: TObject);
     procedure NewtClick(Sender: TObject);
@@ -74,7 +76,7 @@ function f(a: real): real;
 begin
      //Result:= (power(a,3))+(power(a,6))-1;
      //Result:= 2*power(a,2) -1;
-     Result:= power(a,2) -4;
+     Result:= sin(a)-power(a,2);
      //Result:= ln(power(a,2)+1) - (exp(a/2)*cos(3.141592654*a));
      //Result:= cos(3*a) -a;
 end;
@@ -83,8 +85,13 @@ function fp(a: real): real;
 begin
      //Result:= (3*power(a,2))+(6*power(a,5));
      //Result:= 4*a;
-     Result:= 2*a;
+     Result:= cos(a)-(2*a);
      //Result:= ((2*a)/(power(a,2)+1)) - (exp(a/2)*cos(3.141592654*a)/2) + (exp(a/2)*sin(3.141592654*a)*3.141592654);
+end;
+
+function fixp(a: real): real;
+begin
+     Result:= f(a)+a;
 end;
 
 procedure TForm1.BisClick(Sender: TObject);
@@ -176,6 +183,32 @@ begin
      else
          ShowMessage('No cumple Bolzano');
 
+end;
+
+procedure TForm1.FixClick(Sender: TObject);
+var Rt,Val,Ea,Er,a,n: real;
+var i: integer;
+begin
+     a := StrToFloat(TA.Text); n := StrToFloat(TE.Text);
+     Tab.Clear; Self.ShoN();
+     i:=1; Val:=a; Ea:= n+1; Er:= 0;
+     while(n<Ea) do begin
+       Tab.RowCount:= Tab.RowCount+1;
+       Tab.Cells[1,i]:= FloatToStr(Val);
+       Rt:= Val;
+       Val:= fixp(Rt);
+
+       Ea:= Abs(Rt-Val);
+       if (Val <> 0) then
+          Er:= Abs(Ea/Val)
+       else
+          Er:= Abs(Ea/(Val+0.0000001));
+       Tab.Cells[0,i]:= FloatToStr(i-1);
+       Tab.Cells[2,i]:= FloatToStr(Ea);
+       Tab.Cells[3,i]:= FloatToStr(Er);
+       Tab.Cells[4,i]:= FloatToStr(Er*100);
+       i:=i+1;
+     end;
 end;
 
 

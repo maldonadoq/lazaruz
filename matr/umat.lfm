@@ -1,25 +1,25 @@
 object Form1: TForm1
-  Left = 106
+  Left = 80
   Height = 345
-  Top = 163
+  Top = 143
   Width = 1182
-  Caption = 'Form1'
-  ClientHeight = 345
+  Caption = 'Matriz'
+  ClientHeight = 320
   ClientWidth = 1182
   Menu = MainMenu1
   LCLVersion = '1.8.0.4'
   object MA: TGroupBox
     Left = 0
-    Height = 345
+    Height = 320
     Top = 0
     Width = 300
     Align = alLeft
-    ClientHeight = 343
+    ClientHeight = 318
     ClientWidth = 298
     TabOrder = 0
     object MMA: TStringGrid
       Left = 0
-      Height = 293
+      Height = 268
       Top = 50
       Width = 298
       Align = alClient
@@ -70,7 +70,7 @@ object Form1: TForm1
         Left = 24
         Height = 17
         Top = 15
-        Width = 19
+        Width = 15
         Caption = 'RA'
         ParentColor = False
       end
@@ -78,7 +78,7 @@ object Form1: TForm1
         Left = 112
         Height = 17
         Top = 15
-        Width = 19
+        Width = 16
         Caption = 'CA'
         ParentColor = False
       end
@@ -86,16 +86,16 @@ object Form1: TForm1
   end
   object MB: TGroupBox
     Left = 300
-    Height = 345
+    Height = 320
     Top = 0
     Width = 300
     Align = alLeft
-    ClientHeight = 343
+    ClientHeight = 318
     ClientWidth = 298
     TabOrder = 1
     object MMB: TStringGrid
       Left = 0
-      Height = 293
+      Height = 268
       Top = 50
       Width = 298
       Align = alClient
@@ -146,7 +146,7 @@ object Form1: TForm1
         Left = 16
         Height = 17
         Top = 15
-        Width = 19
+        Width = 15
         Caption = 'RB'
         ParentColor = False
       end
@@ -154,7 +154,7 @@ object Form1: TForm1
         Left = 120
         Height = 17
         Top = 15
-        Width = 19
+        Width = 16
         Caption = 'CB'
         ParentColor = False
       end
@@ -162,11 +162,11 @@ object Form1: TForm1
   end
   object RS: TGroupBox
     Left = 600
-    Height = 345
+    Height = 320
     Top = 0
     Width = 582
     Align = alClient
-    ClientHeight = 343
+    ClientHeight = 318
     ClientWidth = 580
     TabOrder = 2
     object OMenu: TPanel
@@ -321,7 +321,7 @@ object Form1: TForm1
     end
     object MMRS: TStringGrid
       Left = 0
-      Height = 229
+      Height = 204
       Top = 114
       Width = 580
       Align = alClient
