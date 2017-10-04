@@ -23,6 +23,7 @@ type
     Resu: TStringGrid;
     Sis: TStringGrid;
     SL: TStringGrid;
+    Splitter1: TSplitter;
     SU: TStringGrid;
     procedure OkClick(Sender: TObject);
     procedure CalClick(Sender: TObject);
@@ -113,6 +114,7 @@ procedure TForm1.CalClick(Sender: TObject);
 var L,U: TMatriz;
 begin
      Self.LoadMA(); Self.LoadMO();
+     //MATA.Re(0,MATR);
      L:= TMatriz.Create(MATA.x,MATA.y);
      U:= TMatriz.Create(MATA.x,MATA.y);
      //Descomposición LU

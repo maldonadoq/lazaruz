@@ -1,21 +1,21 @@
 object Form1: TForm1
-  Left = 256
+  Left = 227
   Height = 394
-  Top = 258
-  Width = 709
+  Top = 241
+  Width = 966
   Align = alTop
   Caption = 'Descomposición LU - Sistema de Ecuaciones Lineales'
   ClientHeight = 394
-  ClientWidth = 709
+  ClientWidth = 966
   LCLVersion = '1.8.0.4'
   object Pop: TGroupBox
     Left = 0
     Height = 193
     Top = 0
-    Width = 709
+    Width = 966
     Align = alTop
     ClientHeight = 191
-    ClientWidth = 707
+    ClientWidth = 964
     TabOrder = 0
     object SO: TGroupBox
       Left = 0
@@ -53,7 +53,7 @@ object Form1: TForm1
       end
     end
     object Resu: TStringGrid
-      Left = 507
+      Left = 764
       Height = 191
       Top = 0
       Width = 200
@@ -72,17 +72,17 @@ object Form1: TForm1
       Left = 176
       Height = 191
       Top = 0
-      Width = 331
+      Width = 588
       Align = alClient
       AutoFillColumns = True
       ColCount = 1
       FixedCols = 0
       FixedRows = 0
-      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAutoAddRows, goSmoothScroll]
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
       RowCount = 1
       TabOrder = 2
       ColWidths = (
-        329
+        586
       )
     end
   end
@@ -90,16 +90,16 @@ object Form1: TForm1
     Left = 0
     Height = 201
     Top = 193
-    Width = 352
+    Width = 528
     Align = alLeft
     ClientHeight = 199
-    ClientWidth = 350
+    ClientWidth = 526
     TabOrder = 1
     object SL: TStringGrid
       Left = 0
       Height = 199
       Top = 0
-      Width = 350
+      Width = 526
       Align = alClient
       AutoFillColumns = True
       ColCount = 1
@@ -108,24 +108,24 @@ object Form1: TForm1
       RowCount = 1
       TabOrder = 0
       ColWidths = (
-        348
+        524
       )
     end
   end
   object BU: TGroupBox
-    Left = 352
+    Left = 528
     Height = 201
     Top = 193
-    Width = 357
+    Width = 438
     Align = alClient
     ClientHeight = 199
-    ClientWidth = 355
+    ClientWidth = 436
     TabOrder = 2
     object SU: TStringGrid
-      Left = 0
+      Left = 5
       Height = 199
       Top = 0
-      Width = 355
+      Width = 431
       Align = alClient
       AutoFillColumns = True
       ColCount = 1
@@ -134,8 +134,14 @@ object Form1: TForm1
       RowCount = 1
       TabOrder = 0
       ColWidths = (
-        353
+        429
       )
+    end
+    object Splitter1: TSplitter
+      Left = 0
+      Height = 199
+      Top = 0
+      Width = 5
     end
   end
 end

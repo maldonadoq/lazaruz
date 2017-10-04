@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Grids, StdCtrls, Math;
+  Grids, StdCtrls, Math, ParseMath;
 
 type
 
@@ -14,6 +14,8 @@ type
 
   TForm1 = class(TForm)
     Bis: TButton;
+    EC1: TEdit;
+    EC2: TEdit;
     Fix: TButton;
     FaP: TButton;
     Newt: TButton;
@@ -32,6 +34,7 @@ type
     procedure BisClick(Sender: TObject);
     procedure NewtClick(Sender: TObject);
     procedure SecClick(Sender: TObject);
+    procedure LoadE();
     procedure Sho();
     procedure ShoN();
   private
@@ -42,6 +45,9 @@ type
 
 var
   Form1: TForm1;
+  ECT: string;
+  ECD: string;
+  MParse: TParseMath;
 
 implementation
 
@@ -51,6 +57,8 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+     MParse:= TParseMath.Create();
+     MParse.AddVariable('x',0.0);
 end;
 
 procedure TForm1.Sho();
@@ -72,32 +80,31 @@ begin
      Tab.Cells[4,0]:= 'Er(%)';
 end;
 
+procedure TForm1.LoadE();
+begin
+     ECT:= EC1.Text;
+     ECD:= EC2.Text;
+end;
+
 function f(a: real): real;
 begin
-     //Result:= (power(a,3))+(power(a,6))-1;
-     //Result:= 2*power(a,2) -1;
-     Result:= sin(a)-power(a,2);
-     //Result:= ln(power(a,2)+1) - (exp(a/2)*cos(3.141592654*a));
-     //Result:= cos(3*a) -a;
+     MParse.NewValue('x',a);
+     MParse.Expression:= ECT;
+     Result := MParse.Evaluate();
 end;
 
 function fp(a: real): real;
 begin
-     //Result:= (3*power(a,2))+(6*power(a,5));
-     //Result:= 4*a;
-     Result:= cos(a)-(2*a);
-     //Result:= ((2*a)/(power(a,2)+1)) - (exp(a/2)*cos(3.141592654*a)/2) + (exp(a/2)*sin(3.141592654*a)*3.141592654);
-end;
-
-function fixp(a: real): real;
-begin
-     Result:= f(a)+a;
+     MParse.NewValue('x',a);
+     MParse.Expression:= ECD;
+     Result := MParse.Evaluate();
 end;
 
 procedure TForm1.BisClick(Sender: TObject);
 var Rt,Val,Ea,Er,s,a,b,n: real;
 var i: integer;
 begin
+     Self.LoadE();
      a := StrToFloat(TA.Text); b := StrToFloat(TB.Text); n := StrToFloat(TE.Text);
      Tab.Clear; Self.Sho();
      i:=1; Val:=0; Ea:= n+1;
@@ -143,6 +150,7 @@ procedure TForm1.FaPClick(Sender: TObject);
 var Rt,Val,Ea,Er,s,a,b,n: real;
 var i: integer;
 begin
+   Self.LoadE();
    a := StrToFloat(TA.Text); b := StrToFloat(TB.Text); n := StrToFloat(TE.Text);
    Tab.Clear; Self.Sho();
    i:=1; Val:=0; Ea:= n+1;
@@ -189,6 +197,7 @@ procedure TForm1.FixClick(Sender: TObject);
 var Rt,Val,Ea,Er,a,n: real;
 var i: integer;
 begin
+     Self.LoadE();
      a := StrToFloat(TA.Text); n := StrToFloat(TE.Text);
      Tab.Clear; Self.ShoN();
      i:=1; Val:=a; Ea:= n+1; Er:= 0;
@@ -196,7 +205,7 @@ begin
        Tab.RowCount:= Tab.RowCount+1;
        Tab.Cells[1,i]:= FloatToStr(Val);
        Rt:= Val;
-       Val:= fixp(Rt);
+       Val:= f(Rt);
 
        Ea:= Abs(Rt-Val);
        if (Val <> 0) then
@@ -216,6 +225,7 @@ procedure TForm1.NewtClick(Sender: TObject);
 var Rt,Val,Ea,Er,a,n: real;
 var i: integer;
 begin
+     Self.LoadE();
      a := StrToFloat(TA.Text); n := StrToFloat(TE.Text);
      Tab.Clear; Self.ShoN();
      i:=1; Val:=a; Ea:= n+1; Er:= 0;
@@ -241,6 +251,7 @@ procedure TForm1.SecClick(Sender: TObject);
 var Rt,Val,Ea,Er,a,n,h: real;
 var i: integer;
 begin
+     Self.LoadE();
      a := StrToFloat(TA.Text); n := StrToFloat(TE.Text);
      Tab.Clear; Self.ShoN();
      i:=1; Val:=a; Ea:= n+1; Er:= 0; h:=n/10;

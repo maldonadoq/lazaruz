@@ -32,6 +32,8 @@ type
         function Adjunta(): TMatriz;
         function Esc(a: real): TMatriz;
         procedure Dlu(l,u: TMatriz);
+        function Re(r: integer): boolean;
+        procedure Print();
         function Se(l,u: TMatriz; s: array of real): vect;
         function Sol(l,u: TMatriz; s: array of real): vect;
     end;
@@ -88,6 +90,17 @@ begin
      MT.Destroy();
 end;
 
+procedure TMatriz.Print();
+var i,j: integer;
+begin
+     for i:=0 to Self.x-1 do begin
+         for j:=0 to Self.y-1 do begin
+             Write(FloatToStr(Self.m[i,j])+' ');
+         end;
+         Write(LineEnding);
+     end;
+end;
+
 function TMatriz.Det(): RD;
 var i: integer;
 begin
@@ -104,11 +117,26 @@ begin
      end;
 end;
 
+function TMatriz.Re(r: integer): boolean;
+var i,j: integer;
+begin
+     Result:= False;
+     for i:=0 to Self.x-1 do begin
+         if(Self.m[i,r]<>0) then begin
+            for j:=0 to Self.y-1 do
+                Self.m[r,j]:= Self.m[r,j] + Self.m[i,j];
+            Result:= True;
+            Break;
+         end;
+     end;
+end;
+
 procedure TMatriz.Dlu(l,u: TMatriz);
 var
    i,j,k: integer;
    s: real;
 begin
+     WriteLn(LineEnding);
      for i:=0 to Self.x-1 do begin
          u.m[i,i] := 1;
          for j:=i to Self.x-1 do begin
@@ -117,10 +145,18 @@ begin
                  s:= s+(l.m[j,k]*u.m[k,i]);
              l.m[j,i] := Self.m[j,i]-s;
          end;
+
          for j:=i+1 to Self.x-1 do begin
              s:= 0;
              for k:=0 to i-1 do
                  s:= s+(l.m[i,k]*u.m[k,j]);
+             WriteLn('lbe');
+             l.Print();
+             {if(l.m[i,i] = 0) then begin
+                 WriteLn('laf');
+                 l.Re(i);
+                 l.Print();
+             end;}
              u.m[i,j] := ((Self.m[i,j]-s)/l.m[i,i]);
          end;
      end;

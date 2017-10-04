@@ -6,36 +6,37 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Grids, MMatriz, Math;
+  ExtCtrls, Grids, MMatriz, Math, ParseMath;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
-    Box: TGroupBox;
+    BP: TGroupBox;
     BPn: TGroupBox;
+    BxP: TGroupBox;
     FXP: TButton;
+    AB: TGroupBox;
     PD: TGroupBox;
-    ERD: TGroupBox;
     SD: TButton;
     DTF: TStringGrid;
+    SECNL: TStringGrid;
     TE: TEdit;
     CNE: TLabel;
-    SB: TStringGrid;
     DI: TStringGrid;
     TER: TLabel;
     Newton: TButton;
     ER: TEdit;
-    Men: TPanel;
+    procedure FormCreate(Sender: TObject);
     procedure FXPClick(Sender: TObject);
     procedure NewtonClick(Sender: TObject);
     procedure SDClick(Sender: TObject);
-    procedure ShoN();
     function Jacob(a: TMatriz; h: real): TMatriz;
     function FX(a: TMatriz): TMatriz;
     function Distance(a,b: TMatriz): real;
     procedure LoadMP();
+    procedure LoadS();
   private
 
   public
@@ -47,12 +48,8 @@ type
   public
     constructor Create();
     destructor Destroy(); override;
-    function a(x: TMatriz): real;
-    function b(x: TMatriz): real;
-    function c(x: TMatriz): real;
-    function d(x: TMatriz): real;
-    function SF(f: integer; x: TMatriz): real;
-    function STF(f: integer; x: TMatriz): real;
+    function SF(ec: string; x: TMatriz): real;
+    //function STF(f: integer; x: TMatriz): real;
     function SFF(x: TMatriz): TMatriz;
     function SDP(f,v: integer; x: TMatriz; h: real): real;
   end;
@@ -61,6 +58,9 @@ var
   Form1: TForm1;
   MP: array of real;
   MATJ: TMatriz;
+  MParse: TParseMath;
+  VX: array of string;
+  ECNL: array of string;
 
 implementation
 
@@ -93,76 +93,25 @@ destructor TSF.Destroy();
 begin
 end;
 
-procedure TForm1.ShoN();
+procedure TForm1.FormCreate(Sender: TObject);
+var n: integer;
 begin
-     SB.RowCount:=1;
-     SB.ColCount:=4;
-     SB.Cells[0,0]:= 'i';   SB.Cells[1,0]:= 'Ea';
-     SB.Cells[2,0]:= 'Er';    SB.Cells[3,0]:= 'Er(%)';
+  n:= 12;
+  SetLength(VX,n);
+  VX[0]:= 'a';  VX[1]:= 'b';  VX[2]:= 'c';
+  VX[3]:= 'd';  VX[4]:= 'e';  VX[5]:= 'f';
+  VX[6]:= 'g';  VX[7]:= 'h';  VX[8]:= 'i';
+  VX[9]:= 'j';  VX[10]:= 'k';  VX[11]:= 'l';
 end;
 
-function TSF.a(x: TMatriz): real;
+function TSF.SF(ec: string; x: TMatriz): real;
+var i: integer;
 begin
-     //Result := x[0]*x[1]*x[2] + 2*x[3];
-     //Result := (5*x.m[0,0]*x.m[0,0]) + (3*x.m[0,0]*x.m[1,0]) - 2;
-     Result :=  power(x.m[0,0],2) - (2*x.m[1,0]) + (3*x.m[2,0]) -17;
+     for i:=0 to x.x-1 do
+       MParse.NewValue(VX[i],x.m[i,0]);
+     MParse.Expression:= ec;
+     Result := MParse.Evaluate();
 end;
-
-function TSF.b(x: TMatriz): real;
-begin
-     //Result := x[1]*x[3] + x[0]*x[2];
-     //Result := (x.m[0,0]*x.m[0,0]) + (7*x.m[1,0]*x.m[1,0]) + (3*x.m[0,0]*x.m[1,0])- 10;
-     Result := x.m[0,0] - (x.m[0,0]*x.m[1,0]) - x.m[2,0] + 7;
-end;
-
-function TSF.c(x: TMatriz): real;
-begin
-     //Result := x.m[1,0]*x.m[1,0]*x.m[1,0] - x.m[0,0] + x.m[2,0]*x.m[3,0];
-     Result := x.m[0,0] + x.m[1,0] + (4*x.m[2,0]) - 21;
-end;
-
-function TSF.d(x: TMatriz): real;
-begin
-     Result := x.m[1,0]*x.m[0,0] + x.m[3,0]*x.m[2,0]*x.m[2,0];
-end;
-
-function TSF.SF(f: integer; x: TMatriz): real;
-begin
-     case f of
-          0: begin
-             Result:= Self.a(x);
-          end;
-          1: begin
-             Result:= Self.b(x);
-          end;
-          2: begin
-             Result:= Self.c(x);
-          end;
-          3: begin
-             Result:= Self.d(x);
-          end;
-     end;
-end;
-
-{trampa}
-function TSF.STF(f: integer; x: TMatriz): real;
-begin
-     case f of
-          0: begin
-             Result:= sqrt(17+(2*x.m[1,0])-(3*x.m[2,0]));
-          end;
-          1: begin
-             Result:= (-x.m[0,0]+x.m[2,0]-7)/(-x.m[0,0]);
-          end;
-          2: begin
-             Result:= (21-x.m[0,0]-x.m[1,0])/4;
-          end;
-          3: begin
-             Result:= Self.d(x);
-          end;
-     end;
-end;
-
 
 function TSF.SFF(x: TMatriz): TMatriz;
 var i,n: integer;
@@ -170,7 +119,7 @@ begin
      n:= x.x;
      Result := TMatriz.Create(n,1);
      for i:=0 to n-1 do begin
-        Result.m[i,0] := Self.SF(i,x);
+        Result.m[i,0] := Self.SF(ECNL[i],x);
      end;
 end;
 
@@ -185,22 +134,8 @@ begin
          xi.m[i,0] := x.m[i,0];
          xj.m[i,0] := x.m[i,0];
      end;
-
      xi.m[v,0]:= xi.m[v,0]+h;  xj.m[v,0]:= xj.m[v,0]-h;
-     case f of
-          0: begin
-             Result:= (Self.a(xi)-Self.a(xj))/(2*h);
-          end;
-          1: begin
-             Result:= (Self.b(xi)-Self.b(xj))/(2*h);
-          end;
-          2: begin
-             Result:= (Self.c(xi)-Self.c(xj))/(2*h);
-          end;
-          3: begin
-             Result:= (Self.d(xi)-Self.d(xj))/(2*h);
-          end;
-     end;
+     Result:= (Self.SF(ECNL[f],xi)-Self.SF(ECNL[f],xj))/(2*h);
 end;
 
 function TForm1.Jacob(a: TMatriz; h: real): TMatriz;
@@ -227,7 +162,7 @@ begin
      m := TSF.Create();
      Result := TMatriz.Create(a.x,1);
      for i:=0 to a.x-1 do begin
-       Result.m[i,0] := m.STF(i,a);
+       Result.m[i,0] := m.SF(ECNL[i],a);
      end;
      m.Destroy();
 end;
@@ -239,6 +174,15 @@ begin
      SetLength(MP,n);
      for i:=0 to n-1 do
        MP[i]:= StrToFloat(DI.Cells[i,0]);
+end;
+
+procedure TForm1.LoadS();
+var i,n: integer;
+begin
+     n:= SECNL.RowCount;
+     SetLength(ECNL,n);
+     for i:=0 to n-1 do
+       ECNL[i]:= SECNL.Cells[0,i];
 end;
 
 function TForm1.Distance(a,b: TMatriz): real;
@@ -260,42 +204,41 @@ var
   det: RD;
   i,j: integer;
 begin
+     Self.LoadS();
      Self.LoadMP();
-     Self.ShoN();
      n:= StrToFloat(ER.Text);
      m := TSF.Create();
      Ea:= n+1; j := 1;
      t := True;
 
      DTF.Clear;
-     DTF.RowCount := 1; DTF.ColCount:= Length(MP);
-     for i:=0 to Length(MP)-1 do
-         DTF.Cells[i,0] := IntToStr(i+1);
+     DTF.RowCount := 1; DTF.ColCount:= Length(MP)+2;
+     DTF.Cells[0,0] := 'i';  DTF.Cells[Length(MP)+1,0] := 'Ea';
+     for i:=1 to Length(MP) do
+         DTF.Cells[i,0] := IntToStr(i);
      VM := VtoM(MP);
      while(n<Ea) and (t=True) do begin
-       SB.RowCount := SB.RowCount+1;
        DTF.RowCount := DTF.RowCount+1;
        TMP := VM;
        MATJ := Self.Jacob(VM,0.0001);
        det := MATJ.Det();
        if(det.D <> 0) then begin
-         PR := MATJ.Invers();
+         PR := MATJ.Inverse(det.D);
          FT := m.SFF(VM);
          VM := VM-(PR*FT);
 
-         for i:=0 to VM.x-1 do begin
-             DTF.Cells[i,j] := FloatToStr(VM.m[i][0]);
+         for i:=1 to VM.x do begin
+             DTF.Cells[i,j] := FloatToStr(VM.m[i-1][0]);
          end;
-
          Ea := Self.Distance(TMP,VM);
-         SB.Cells[0,j]:= FloatToStr(j);
-         SB.Cells[1,j]:= FloatToStr(Ea);
-         SB.Cells[2,j]:= FloatToStr(0);
-         SB.Cells[3,j]:= FloatToStr(0);
+         DTF.Cells[0,j] := IntToStr(j);
+         DTF.Cells[VM.x+1,j] := FloatToStr(Ea);
          j := j+1;
        end
-       else
+       else begin
            t := False;
+           ShowMessage('Determinante en la iteración '+IntToStr(j-1)+' es 0');
+       end;
      end;
      m.Destroy();
 end;
@@ -308,40 +251,44 @@ var
   i,j: integer;
 begin
      Self.LoadMP();
-     Self.ShoN();
+     Self.LoadS();
      n:= StrToFloat(ER.Text);
      m := TSF.Create();
      Ea:= n+1; j := 1;
 
-     DTF.Clear;
-     DTF.RowCount := 1; DTF.ColCount:= Length(MP);
-     for i:=0 to Length(MP)-1 do
-         DTF.Cells[i,0] := IntToStr(i+1);
+     DTF.RowCount := 1; DTF.ColCount:= Length(MP)+2;
+     DTF.Cells[0,0] := 'i';  DTF.Cells[Length(MP)+1,0] := 'Ea';
+     for i:=1 to Length(MP) do
+         DTF.Cells[i,0] := IntToStr(i);
      VM := VtoM(MP);
      while(n<Ea) do begin
-       SB.RowCount := SB.RowCount+1;
        DTF.RowCount := DTF.RowCount+1;
        TMP := VM;
        VM := Self.FX(VM);
 
-       for i:=0 to VM.x-1 do begin
-           DTF.Cells[i,j] := FloatToStr(VM.m[i][0]);
+       for i:=1 to VM.x do begin
+             DTF.Cells[i,j] := FloatToStr(VM.m[i-1][0]);
        end;
 
        Ea := Self.Distance(TMP,VM);
-       SB.Cells[0,j]:= FloatToStr(j);
-       SB.Cells[1,j]:= FloatToStr(Ea);
-       SB.Cells[2,j]:= FloatToStr(0);
-       SB.Cells[3,j]:= FloatToStr(0);
+       DTF.Cells[0,j] := IntToStr(j);
+       DTF.Cells[VM.x+1,j] := FloatToStr(Ea);
        j := j+1;
      end;
      m.Destroy();
 end;
 
 procedure TForm1.SDClick(Sender: TObject);
+var
+  i,n: integer;
 begin
-     DI.RowCount:= 1;
-     DI.ColCount:= StrToInt(TE.Text);
+    n := StrToInt(TE.Text);
+    MParse:= TParseMath.create();
+    DI.RowCount:= 1;  DI.ColCount:= n;
+    SECNL.RowCount:= n; SECNL.ColCount:= 1;
+    for i:= 0 to n-1 do begin
+        MParse.AddVariable(VX[i],0.0);
+    end;
 end;
 
 end.
