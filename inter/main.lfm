@@ -1,0 +1,371 @@
+object frmGraficadora: TfrmGraficadora
+  Left = 383
+  Height = 669
+  Top = 64
+  Width = 689
+  Caption = 'Métodos de Interpolación'
+  ClientHeight = 669
+  ClientWidth = 689
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.8.0.4'
+  object GRA: TGroupBox
+    Left = 0
+    Height = 413
+    Top = 256
+    Width = 689
+    Align = alClient
+    ClientHeight = 411
+    ClientWidth = 687
+    TabOrder = 0
+    object chrGrafica: TChart
+      Left = 0
+      Height = 411
+      Top = 0
+      Width = 687
+      AxisList = <      
+        item
+          Grid.Color = clSilver
+          Minors = <>
+          Title.LabelFont.Orientation = 900
+        end      
+        item
+          Grid.Color = clSilver
+          Intervals.Count = 1
+          Intervals.MinLength = -50
+          Alignment = calBottom
+          Minors = <>
+          Position = 5
+        end>
+      BackColor = clWhite
+      Foot.Brush.Color = clBtnFace
+      Foot.Font.Color = clBlue
+      Title.Brush.Color = clBtnFace
+      Title.Font.Color = clBlue
+      Title.Text.Strings = (
+        'TAChart'
+      )
+      Align = alClient
+      object EjeX: TConstantLine
+        Arrow.BaseLength = 6
+        Arrow.Visible = True
+        Position = 0
+        Title = 'Eje X'
+      end
+      object EjeY: TConstantLine
+        Arrow.BaseLength = 6
+        Arrow.Visible = True
+        LineStyle = lsVertical
+        Position = 0
+      end
+      object Plotear: TLineSeries
+        Active = False
+      end
+      object Funcion: TFuncSeries
+        Active = False
+        Extent.UseXMax = True
+        Extent.UseXMin = True
+        Extent.XMax = -5
+        Extent.XMin = 5
+        OnCalculate = FuncionCalculate
+        ExtentAutoY = True
+      end
+      object Area: TAreaSeries
+        Transparency = 150
+        Active = False
+        Title = 'Area'
+        AxisIndexY = 0
+        AreaBrush.Color = 14803455
+        AreaContourPen.Color = clRed
+        AreaContourPen.Style = psDot
+        AreaContourPen.Width = 3
+        AreaLinesPen.Style = psClear
+        UseZeroLevel = True
+      end
+    end
+  end
+  object MEN: TGroupBox
+    Left = 0
+    Height = 256
+    Top = 0
+    Width = 689
+    Align = alTop
+    ClientHeight = 254
+    ClientWidth = 687
+    TabOrder = 1
+    object MN: TGroupBox
+      Left = 0
+      Height = 49
+      Top = 0
+      Width = 687
+      Align = alTop
+      ClientHeight = 47
+      ClientWidth = 685
+      TabOrder = 0
+      object NP: TEdit
+        Left = 56
+        Height = 29
+        Top = 8
+        Width = 48
+        TabOrder = 0
+        Text = '3'
+      end
+      object OK: TButton
+        Left = 136
+        Height = 29
+        Top = 8
+        Width = 80
+        Caption = 'OK'
+        OnClick = OKClick
+        TabOrder = 1
+      end
+      object LAG: TButton
+        Left = 280
+        Height = 29
+        Top = 8
+        Width = 96
+        Caption = 'Lagrange'
+        OnClick = LAGClick
+        TabOrder = 2
+      end
+      object NEWT: TButton
+        Left = 408
+        Height = 29
+        Top = 8
+        Width = 98
+        Caption = 'Newton'
+        OnClick = NEWTClick
+        TabOrder = 3
+      end
+      object GR: TButton
+        Left = 560
+        Height = 29
+        Top = 8
+        Width = 80
+        Caption = 'Graficar'
+        OnClick = GRClick
+        TabOrder = 4
+      end
+    end
+    object DPO: TGroupBox
+      Left = 0
+      Height = 205
+      Top = 49
+      Width = 687
+      Align = alClient
+      ClientHeight = 203
+      ClientWidth = 685
+      TabOrder = 1
+      object ST: TGroupBox
+        Left = 0
+        Height = 56
+        Top = 0
+        Width = 685
+        Align = alTop
+        ClientHeight = 54
+        ClientWidth = 683
+        TabOrder = 0
+        object DPOS: TStringGrid
+          Left = 0
+          Height = 54
+          Top = 0
+          Width = 683
+          Align = alClient
+          AutoFillColumns = True
+          ColCount = 1
+          FixedCols = 0
+          FixedRows = 0
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+          RowCount = 2
+          TabOrder = 0
+          ColWidths = (
+            681
+          )
+        end
+      end
+      object PAN: TGroupBox
+        Left = 0
+        Height = 147
+        Top = 56
+        Width = 685
+        Align = alClient
+        ClientHeight = 145
+        ClientWidth = 683
+        TabOrder = 1
+        object FUN: TComboBox
+          Left = 32
+          Height = 29
+          Top = 8
+          Width = 611
+          BorderSpacing.Around = 2
+          ItemHeight = 0
+          Items.Strings = (
+            'sin(x)'
+            'cos(x)'
+            'power(x,2)-4*x'
+            '1-3*x'
+          )
+          TabOrder = 0
+        end
+        object ediIntervalo: TEdit
+          Left = 24
+          Height = 29
+          Top = 48
+          Width = 104
+          BorderSpacing.Around = 2
+          TabOrder = 1
+          Text = '[ -10; 10 ]'
+        end
+        object cboxColorFuncion: TColorBox
+          Left = 24
+          Height = 31
+          Top = 80
+          Width = 104
+          DefaultColorColor = clBlue
+          Selected = clBlue
+          ItemHeight = 16
+          TabOrder = 2
+        end
+        object chkUsarPloteo: TCheckBox
+          AnchorSideLeft.Control = cboxColorFuncion
+          AnchorSideTop.Control = cboxColorFuncion
+          AnchorSideTop.Side = asrBottom
+          Left = 26
+          Height = 23
+          Top = 116
+          Width = 91
+          BorderSpacing.Left = 2
+          BorderSpacing.Top = 5
+          Caption = 'Usar ploteo'
+          Checked = True
+          State = cbChecked
+          TabOrder = 3
+        end
+        object AA: TEdit
+          Left = 184
+          Height = 29
+          Top = 80
+          Width = 67
+          Alignment = taCenter
+          TabOrder = 4
+          Text = '-1'
+          TextHint = '1'
+        end
+        object AB: TEdit
+          Left = 184
+          Height = 29
+          Top = 48
+          Width = 67
+          Alignment = taCenter
+          TabOrder = 5
+          Text = '1'
+        end
+        object AR: TButton
+          Left = 528
+          Height = 29
+          Top = 80
+          Width = 115
+          Caption = 'Región'
+          OnClick = ARClick
+          TabOrder = 6
+        end
+        object INX: TEdit
+          Left = 328
+          Height = 29
+          Top = 48
+          Width = 136
+          TabOrder = 7
+        end
+        object INY: TEdit
+          Left = 328
+          Height = 29
+          Top = 80
+          Width = 136
+          TabOrder = 8
+        end
+        object INT: TButton
+          Left = 528
+          Height = 29
+          Top = 48
+          Width = 115
+          Caption = 'Interpolar'
+          OnClick = INTClick
+          TabOrder = 9
+        end
+        object TX: TLabel
+          Left = 296
+          Height = 17
+          Top = 56
+          Width = 7
+          Caption = 'X'
+          ParentColor = False
+        end
+        object TY: TLabel
+          Left = 296
+          Height = 17
+          Top = 88
+          Width = 7
+          Caption = 'Y'
+          ParentColor = False
+        end
+        object TA: TLabel
+          Left = 152
+          Height = 17
+          Top = 88
+          Width = 8
+          Caption = 'A'
+          ParentColor = False
+        end
+        object TB: TLabel
+          Left = 152
+          Height = 17
+          Top = 56
+          Width = 8
+          Caption = 'B'
+          ParentColor = False
+        end
+        object RAR: TEdit
+          Left = 328
+          Height = 29
+          Top = 112
+          Width = 136
+          TabOrder = 10
+        end
+        object TRA: TButton
+          Left = 528
+          Height = 29
+          Top = 112
+          Width = 115
+          Caption = 'Integrar'
+          OnClick = TRAClick
+          TabOrder = 11
+        end
+        object ND: TEdit
+          Left = 184
+          Height = 29
+          Top = 112
+          Width = 67
+          Alignment = taCenter
+          TabOrder = 12
+          Text = '100'
+        end
+        object TN: TLabel
+          Left = 152
+          Height = 17
+          Top = 118
+          Width = 9
+          Caption = 'N'
+          ParentColor = False
+        end
+        object TR: TLabel
+          Left = 296
+          Height = 17
+          Top = 118
+          Width = 7
+          Caption = 'R'
+          ParentColor = False
+        end
+      end
+    end
+  end
+end
