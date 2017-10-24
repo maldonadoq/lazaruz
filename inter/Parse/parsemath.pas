@@ -109,6 +109,15 @@ begin
 
 end;
 
+Procedure ExprExp( var Result: TFPExpressionResult; Const Args: TExprParameterArray);
+var
+  x: Double;
+begin
+   x := ArgToFloat( Args[ 0 ] );
+   Result.resFloat := exp(x);
+
+end;
+
 Procedure ExprLn( var Result: TFPExpressionResult; Const Args: TExprParameterArray);
 var
   x: Double;
@@ -167,6 +176,7 @@ begin
        AddFunction('tan', 'F', 'F', @ExprTan);
        AddFunction('sin', 'F', 'F', @ExprSin);
        AddFunction('sen', 'F', 'F', @ExprSin);
+       AddFunction('exp', 'F', 'F', @ExprExp);
        AddFunction('cos', 'F', 'F', @ExprCos);
        AddFunction('ln', 'F', 'F', @ExprLn);
        AddFunction('log', 'F', 'F', @ExprLog);

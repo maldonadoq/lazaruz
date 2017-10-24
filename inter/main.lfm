@@ -1,28 +1,28 @@
 object frmGraficadora: TfrmGraficadora
-  Left = 383
-  Height = 669
-  Top = 64
-  Width = 689
+  Left = 313
+  Height = 715
+  Top = 26
+  Width = 881
   Caption = 'Métodos de Interpolación'
-  ClientHeight = 669
-  ClientWidth = 689
+  ClientHeight = 715
+  ClientWidth = 881
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   LCLVersion = '1.8.0.4'
   object GRA: TGroupBox
     Left = 0
-    Height = 413
-    Top = 256
-    Width = 689
+    Height = 427
+    Top = 288
+    Width = 881
     Align = alClient
-    ClientHeight = 411
-    ClientWidth = 687
+    ClientHeight = 425
+    ClientWidth = 879
     TabOrder = 0
     object chrGrafica: TChart
       Left = 0
-      Height = 411
+      Height = 425
       Top = 0
-      Width = 687
+      Width = 879
       AxisList = <      
         item
           Grid.Color = clSilver
@@ -86,21 +86,21 @@ object frmGraficadora: TfrmGraficadora
   end
   object MEN: TGroupBox
     Left = 0
-    Height = 256
+    Height = 288
     Top = 0
-    Width = 689
+    Width = 881
     Align = alTop
-    ClientHeight = 254
-    ClientWidth = 687
+    ClientHeight = 286
+    ClientWidth = 879
     TabOrder = 1
     object MN: TGroupBox
       Left = 0
       Height = 49
       Top = 0
-      Width = 687
+      Width = 879
       Align = alTop
       ClientHeight = 47
-      ClientWidth = 685
+      ClientWidth = 877
       TabOrder = 0
       object NP: TEdit
         Left = 56
@@ -120,7 +120,7 @@ object frmGraficadora: TfrmGraficadora
         TabOrder = 1
       end
       object LAG: TButton
-        Left = 280
+        Left = 272
         Height = 29
         Top = 8
         Width = 96
@@ -129,7 +129,7 @@ object frmGraficadora: TfrmGraficadora
         TabOrder = 2
       end
       object NEWT: TButton
-        Left = 408
+        Left = 400
         Height = 29
         Top = 8
         Width = 98
@@ -138,7 +138,7 @@ object frmGraficadora: TfrmGraficadora
         TabOrder = 3
       end
       object GR: TButton
-        Left = 560
+        Left = 664
         Height = 29
         Top = 8
         Width = 80
@@ -146,30 +146,48 @@ object frmGraficadora: TfrmGraficadora
         OnClick = GRClick
         TabOrder = 4
       end
+      object AR: TButton
+        Left = 760
+        Height = 29
+        Top = 8
+        Width = 88
+        Caption = 'Región'
+        OnClick = ARClick
+        TabOrder = 5
+      end
+      object GEN: TButton
+        Left = 568
+        Height = 29
+        Top = 8
+        Width = 83
+        Caption = 'Generate'
+        OnClick = GENClick
+        TabOrder = 6
+      end
     end
     object DPO: TGroupBox
       Left = 0
-      Height = 205
+      Height = 237
       Top = 49
-      Width = 687
+      Width = 879
       Align = alClient
-      ClientHeight = 203
-      ClientWidth = 685
+      ClientHeight = 235
+      ClientWidth = 877
       TabOrder = 1
       object ST: TGroupBox
         Left = 0
         Height = 56
         Top = 0
-        Width = 685
+        Width = 877
         Align = alTop
         ClientHeight = 54
-        ClientWidth = 683
+        ClientWidth = 875
         TabOrder = 0
         object DPOS: TStringGrid
           Left = 0
           Height = 54
           Top = 0
-          Width = 683
+          Width = 875
           Align = alClient
           AutoFillColumns = True
           ColCount = 1
@@ -179,24 +197,24 @@ object frmGraficadora: TfrmGraficadora
           RowCount = 2
           TabOrder = 0
           ColWidths = (
-            681
+            873
           )
         end
       end
       object PAN: TGroupBox
         Left = 0
-        Height = 147
+        Height = 179
         Top = 56
-        Width = 685
+        Width = 877
         Align = alClient
-        ClientHeight = 145
-        ClientWidth = 683
+        ClientHeight = 177
+        ClientWidth = 875
         TabOrder = 1
         object FUN: TComboBox
-          Left = 32
+          Left = 40
           Height = 29
-          Top = 8
-          Width = 611
+          Top = 40
+          Width = 795
           BorderSpacing.Around = 2
           ItemHeight = 0
           Items.Strings = (
@@ -210,7 +228,7 @@ object frmGraficadora: TfrmGraficadora
         object ediIntervalo: TEdit
           Left = 24
           Height = 29
-          Top = 48
+          Top = 80
           Width = 104
           BorderSpacing.Around = 2
           TabOrder = 1
@@ -219,7 +237,7 @@ object frmGraficadora: TfrmGraficadora
         object cboxColorFuncion: TColorBox
           Left = 24
           Height = 31
-          Top = 80
+          Top = 112
           Width = 104
           DefaultColorColor = clBlue
           Selected = clBlue
@@ -232,7 +250,7 @@ object frmGraficadora: TfrmGraficadora
           AnchorSideTop.Side = asrBottom
           Left = 26
           Height = 23
-          Top = 116
+          Top = 148
           Width = 91
           BorderSpacing.Left = 2
           BorderSpacing.Top = 5
@@ -242,128 +260,189 @@ object frmGraficadora: TfrmGraficadora
           TabOrder = 3
         end
         object AA: TEdit
-          Left = 184
+          Left = 160
           Height = 29
-          Top = 80
-          Width = 67
+          Top = 112
+          Width = 48
           Alignment = taCenter
           TabOrder = 4
           Text = '-1'
           TextHint = '1'
         end
         object AB: TEdit
-          Left = 184
+          Left = 160
           Height = 29
-          Top = 48
-          Width = 67
+          Top = 80
+          Width = 48
           Alignment = taCenter
           TabOrder = 5
           Text = '1'
         end
-        object AR: TButton
-          Left = 528
+        object INX: TEdit
+          Left = 248
           Height = 29
           Top = 80
-          Width = 115
-          Caption = 'Región'
-          OnClick = ARClick
+          Width = 80
           TabOrder = 6
         end
-        object INX: TEdit
-          Left = 328
+        object INY: TEdit
+          Left = 248
           Height = 29
-          Top = 48
-          Width = 136
+          Top = 112
+          Width = 80
           TabOrder = 7
         end
-        object INY: TEdit
-          Left = 328
-          Height = 29
-          Top = 80
-          Width = 136
-          TabOrder = 8
-        end
         object INT: TButton
-          Left = 528
+          Left = 248
           Height = 29
-          Top = 48
-          Width = 115
+          Top = 144
+          Width = 80
           Caption = 'Interpolar'
           OnClick = INTClick
-          TabOrder = 9
+          TabOrder = 8
         end
         object TX: TLabel
-          Left = 296
+          Left = 224
           Height = 17
-          Top = 56
+          Top = 88
           Width = 7
           Caption = 'X'
           ParentColor = False
         end
         object TY: TLabel
-          Left = 296
+          Left = 224
           Height = 17
-          Top = 88
+          Top = 120
           Width = 7
           Caption = 'Y'
           ParentColor = False
         end
         object TA: TLabel
-          Left = 152
+          Left = 144
           Height = 17
-          Top = 88
+          Top = 120
           Width = 8
           Caption = 'A'
           ParentColor = False
         end
         object TB: TLabel
-          Left = 152
+          Left = 145
           Height = 17
-          Top = 56
+          Top = 88
           Width = 8
           Caption = 'B'
           ParentColor = False
         end
-        object RAR: TEdit
-          Left = 328
+        object RART: TEdit
+          Left = 448
           Height = 29
-          Top = 112
-          Width = 136
-          TabOrder = 10
+          Top = 80
+          Width = 152
+          TabOrder = 9
         end
         object TRA: TButton
-          Left = 528
+          Left = 344
           Height = 29
-          Top = 112
-          Width = 115
-          Caption = 'Integrar'
+          Top = 80
+          Width = 88
+          Caption = 'Trapecio'
           OnClick = TRAClick
-          TabOrder = 11
+          TabOrder = 10
         end
         object ND: TEdit
-          Left = 184
+          Left = 160
           Height = 29
-          Top = 112
-          Width = 67
+          Top = 144
+          Width = 48
           Alignment = taCenter
-          TabOrder = 12
+          TabOrder = 11
           Text = '100'
         end
         object TN: TLabel
-          Left = 152
+          Left = 144
           Height = 17
-          Top = 118
+          Top = 152
           Width = 9
           Caption = 'N'
           ParentColor = False
         end
-        object TR: TLabel
-          Left = 296
-          Height = 17
-          Top = 118
-          Width = 7
-          Caption = 'R'
-          ParentColor = False
+        object SimpsonI: TButton
+          Left = 344
+          Height = 29
+          Top = 112
+          Width = 88
+          Caption = 'SimpsonI'
+          OnClick = SimpsonIClick
+          TabOrder = 12
+        end
+        object SimpsonII: TButton
+          Left = 344
+          Height = 29
+          Top = 144
+          Width = 88
+          Caption = 'SimpsonII'
+          OnClick = SimpsonIIClick
+          TabOrder = 13
+        end
+        object RARS: TEdit
+          Left = 448
+          Height = 29
+          Top = 112
+          Width = 152
+          TabOrder = 14
+        end
+        object RARSI: TEdit
+          Left = 448
+          Height = 29
+          Top = 144
+          Width = 152
+          TabOrder = 15
+        end
+        object Gauss: TButton
+          Left = 616
+          Height = 29
+          Top = 80
+          Width = 75
+          Caption = 'Gauss'
+          OnClick = GaussClick
+          TabOrder = 16
+        end
+        object OP: TButton
+          Left = 616
+          Height = 29
+          Top = 112
+          Width = 75
+          Caption = 'Punto M'
+          OnClick = OPClick
+          TabOrder = 17
+        end
+        object RARG: TEdit
+          Left = 703
+          Height = 29
+          Top = 80
+          Width = 145
+          TabOrder = 18
+        end
+        object RARO: TEdit
+          Left = 703
+          Height = 29
+          Top = 112
+          Width = 145
+          TabOrder = 19
+        end
+        object F1: TEdit
+          Left = 40
+          Height = 29
+          Top = 8
+          Width = 392
+          TabOrder = 20
+        end
+        object F2: TEdit
+          Left = 448
+          Height = 29
+          Top = 8
+          Width = 387
+          TabOrder = 21
         end
       end
     end
