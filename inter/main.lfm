@@ -436,6 +436,7 @@ object frmGraficadora: TfrmGraficadora
           Top = 8
           Width = 392
           TabOrder = 20
+          Text = 'power(x,2)-3'
         end
         object F2: TEdit
           Left = 448
@@ -443,6 +444,7 @@ object frmGraficadora: TfrmGraficadora
           Top = 8
           Width = 387
           TabOrder = 21
+          Text = '-power(x,2)+3'
         end
       end
     end

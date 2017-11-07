@@ -83,16 +83,17 @@ type
     procedure SimpsonIClick(Sender: TObject);
     procedure SimpsonIIClick(Sender: TObject);
     procedure TRAClick(Sender: TObject);
+    procedure Raices();
 
   private
     { private declarations }
     Parse  : TparseMath;
-    Xminimo,
-    Xmaximo: String;
+    Xminimo, Xmaximo: String;
+    Resta: String;
 
-    function f( x: Double ): Double;
+    function f(x: Double): Double;
+    function fs(x: Double): Double;
     Procedure DetectarIntervalo();
-
   public
     { public declarations }
   end;
@@ -220,15 +221,13 @@ begin
       Active:= False;
 
 
-      Extent.XMax:= StrToFloat( Xmaximo );
-      Extent.XMin:= StrToFloat( Xminimo );
+      Extent.XMax:= StrToFloat(Xmaximo);
+      Extent.XMin:= StrToFloat(Xminimo);
 
       Extent.UseXMax:= true;
       Extent.UseXMin:= true;
-      Funcion.Pen.Color:=  cboxColorFuncion.Colors[ cboxColorFuncion.ItemIndex ];
-
+      Funcion.Pen.Color:=  cboxColorFuncion.Colors[cboxColorFuncion.ItemIndex];
       Active:= True;
-
   end;
 end;
 
@@ -271,7 +270,7 @@ begin
  if Trim( FUN.Text ) = '' then
     exit;
 
- DetectarIntervalo();
+ //DetectarIntervalo();
 
  if chkUsarPloteo.Checked then
     GraficarFuncionConPloteo()
@@ -496,7 +495,39 @@ end;
 
 procedure TfrmGraficadora.GENClick(Sender: TObject);
 begin
+     Resta:= '('+F1.Text+')-('+F2.Text+')';
+     Self.Raices();
      FUN.Text:= 'abs(('+F1.Text+')-('+F2.Text+'))';
+end;
+
+function TfrmGraficadora.fs( x: Double ): Double;
+begin
+     parse.Expression:= Self.Resta;
+     Parse.NewValue('x' , x );
+     Result:= Parse.Evaluate();
+end;
+
+procedure TfrmGraficadora.Raices();
+var
+  i: integer;
+  sl: TStringList;
+  h, xi, xf: real;
+begin
+ xi:= -50; xf:= 50; h:= 0.001;
+ sl:= TStringList.Create;
+ WriteLn(Self.Resta);
+ while(xi < xf) do begin
+   if((Self.fs(xi)*Self.fs(xi+h)) < 0) then
+       sl.Add(FloatToStr(xi));
+   xi:= xi+h;
+ end;
+
+ if(sl.Count<>0) then begin
+   Xminimo:= FloatToStr(StrToFloat(sl[0])-2);
+   Xmaximo:= FloatToStr(StrToFloat(sl[sl.Count-1])+2);
+   AB.Text:= sl[sl.Count-1];
+   AA.Text:= sl[0];
+ end;
 end;
 
 procedure TfrmGraficadora.INTClick(Sender: TObject);
