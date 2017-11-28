@@ -1,0 +1,269 @@
+object frmGraficadora: TfrmGraficadora
+  Left = 323
+  Height = 546
+  Top = 135
+  Width = 831
+  Caption = 'Métodos de Extrapolación'
+  ClientHeight = 546
+  ClientWidth = 831
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.8.0.4'
+  Scaled = False
+  object chrGrafica: TChart
+    Left = 232
+    Height = 546
+    Top = 0
+    Width = 599
+    AxisList = <    
+      item
+        Grid.Color = clSilver
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Grid.Color = clSilver
+        Intervals.Count = 1
+        Intervals.MinLength = -50
+        Alignment = calBottom
+        Minors = <>
+        Position = 5
+      end>
+    BackColor = clWhite
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Align = alClient
+    object EjeX: TConstantLine
+      Arrow.BaseLength = 6
+      Arrow.Visible = True
+      Position = 0
+      Title = 'Eje X'
+    end
+    object EjeY: TConstantLine
+      Arrow.BaseLength = 6
+      Arrow.Visible = True
+      LineStyle = lsVertical
+      Position = 0
+    end
+    object Plotear: TLineSeries
+      Active = False
+    end
+    object Funcion: TFuncSeries
+      Active = False
+      Extent.UseXMax = True
+      Extent.UseXMin = True
+      Extent.XMax = -5
+      Extent.XMin = 5
+      ExtentAutoY = True
+    end
+    object Area: TAreaSeries
+      Transparency = 150
+      Active = False
+      Title = 'Area'
+      AxisIndexY = 0
+      AreaBrush.Color = 14803455
+      AreaContourPen.Color = clRed
+      AreaContourPen.Style = psDot
+      AreaContourPen.Width = 3
+      AreaLinesPen.Style = psClear
+      UseZeroLevel = True
+    end
+    object PlotearS: TLineSeries
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Height = 546
+    Top = 0
+    Width = 232
+    Align = alLeft
+    ClientHeight = 544
+    ClientWidth = 230
+    TabOrder = 1
+    object Men: TPanel
+      Left = 2
+      Height = 358
+      Top = 2
+      Width = 226
+      Align = alTop
+      BorderSpacing.Around = 2
+      BevelInner = bvRaised
+      BevelOuter = bvLowered
+      ClientHeight = 358
+      ClientWidth = 226
+      TabOrder = 0
+      object Graf: TButton
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Side = asrBottom
+        Left = 160
+        Height = 31
+        Top = 144
+        Width = 56
+        Anchors = [akTop]
+        BorderSpacing.Top = 5
+        Caption = 'Plotear'
+        OnClick = GrafClick
+        TabOrder = 0
+      end
+      object ediIntervalo: TEdit
+        Left = 4
+        Height = 29
+        Top = 99
+        Width = 218
+        Align = alTop
+        BorderSpacing.Around = 2
+        TabOrder = 1
+        Text = '[ 0.5; 3 ]'
+      end
+      object cboxColorFuncion: TColorBox
+        Left = 2
+        Height = 31
+        Top = 66
+        Width = 222
+        DefaultColorColor = clBlue
+        Selected = clBlue
+        Align = alTop
+        ItemHeight = 16
+        TabOrder = 2
+      end
+      object Txt: TEdit
+        Left = 4
+        Height = 29
+        Top = 4
+        Width = 218
+        Align = alTop
+        BorderSpacing.Around = 2
+        TabOrder = 3
+        Text = 'data.txt'
+      end
+      object Func: TEdit
+        Left = 4
+        Height = 29
+        Top = 35
+        Width = 218
+        Align = alTop
+        BorderSpacing.Around = 2
+        TabOrder = 4
+      end
+      object Load: TButton
+        Left = 8
+        Height = 31
+        Top = 144
+        Width = 72
+        Caption = 'Load'
+        OnClick = LoadClick
+        TabOrder = 5
+      end
+      object Run: TButton
+        Left = 88
+        Height = 31
+        Top = 144
+        Width = 64
+        Caption = 'Run'
+        OnClick = RunClick
+        TabOrder = 6
+      end
+      object Lineal: TEdit
+        Left = 8
+        Height = 29
+        Top = 184
+        Width = 144
+        TabOrder = 7
+      end
+      object Exponencial: TEdit
+        Left = 8
+        Height = 29
+        Top = 216
+        Width = 144
+        TabOrder = 8
+      end
+      object Senoidal: TEdit
+        Left = 8
+        Height = 29
+        Top = 280
+        Width = 144
+        TabOrder = 9
+      end
+      object Logaritmo: TEdit
+        Left = 8
+        Height = 29
+        Top = 248
+        Width = 144
+        TabOrder = 10
+      end
+      object RL: TEdit
+        Left = 160
+        Height = 29
+        Top = 184
+        Width = 56
+        TabOrder = 11
+      end
+      object RE: TEdit
+        Left = 160
+        Height = 29
+        Top = 216
+        Width = 56
+        TabOrder = 12
+      end
+      object RLN: TEdit
+        Left = 160
+        Height = 29
+        Top = 248
+        Width = 56
+        TabOrder = 13
+      end
+      object RS: TEdit
+        Left = 160
+        Height = 29
+        Top = 280
+        Width = 56
+        TabOrder = 14
+      end
+      object XT: TEdit
+        Left = 8
+        Height = 29
+        Top = 320
+        Width = 64
+        TabOrder = 15
+      end
+      object YT: TEdit
+        Left = 88
+        Height = 29
+        Top = 320
+        Width = 64
+        TabOrder = 16
+      end
+      object Eval: TButton
+        Left = 160
+        Height = 29
+        Top = 320
+        Width = 56
+        Caption = 'Ok'
+        OnClick = EvalClick
+        TabOrder = 17
+      end
+    end
+    object Data: TStringGrid
+      Left = 0
+      Height = 182
+      Top = 362
+      Width = 230
+      Align = alClient
+      AutoFillColumns = True
+      ColCount = 2
+      FixedCols = 0
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAlwaysShowEditor, goSmoothScroll]
+      RowCount = 2
+      TabOrder = 1
+      ColWidths = (
+        114
+        114
+      )
+    end
+  end
+end

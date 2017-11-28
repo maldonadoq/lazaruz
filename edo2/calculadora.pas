@@ -154,7 +154,7 @@ end;
 
 procedure TfrmCaluladora.mitemCalculadoraClick(Sender: TObject);
 begin
-   frmGraficadora.Show;
+     EDOS.Show;
 end;
 
 procedure TfrmCaluladora.sbtnConversiones1Click(Sender: TObject);

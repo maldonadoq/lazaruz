@@ -270,7 +270,7 @@ begin
  if Trim( FUN.Text ) = '' then
     exit;
 
- //DetectarIntervalo();
+ DetectarIntervalo();
 
  if chkUsarPloteo.Checked then
     GraficarFuncionConPloteo()
@@ -444,24 +444,30 @@ end;
 
 procedure TfrmGraficadora.SimpsonIIClick(Sender: TObject);
 var
-  n,nt,i: integer;
-  r,s,a,b,h: real;
+  n,nt,i,j: integer;
+  r,s,tma,a,b,h: real;
   xim: array of real;
 begin
-     n:= StrToInt(ND.Text); a:= StrToFloat(AA.Text); b:= StrToFloat(AB.Text);
-     h:= (b-a)/(3*n);
-     r:= 0; s:=0;
-     nt:= (3*n)+1;
-     SetLength(xim,nt);
-     for i:=0 to nt-1 do begin
-       xim[i]:= Self.f(a);
-       a:= a+h;
-     end;
+     n:= StrToInt(ND.Text); a:= StrToFloat(AA.Text); b:= 100.0;
+     tma:=a;
+     for j:=0 to 9 do begin
+       h:= (b-a)/(3*n);
+       r:= 0; s:=0;
+       nt:= (3*n)+1;
+       SetLength(xim,nt);
+       for i:=0 to nt-1 do begin
+         xim[i]:= Self.f(a);
+         a:= a+h;
+       end;
 
-     for i:=1 to n do  r:= r+xim[3*(i-1)]+xim[3*i];
-     for i:=1 to n do  s:= s+xim[(3*i)-2]+xim[(3*i)-1];
-     r:= r+(3*s);
-     RARSI.Text:= FloatToStr((3*h*r)/8);
+       for i:=1 to n do  r:= r+xim[3*(i-1)]+xim[3*i];
+       for i:=1 to n do  s:= s+xim[(3*i)-2]+xim[(3*i)-1];
+       r:= r+(3*s);
+       Write(FloatToStr((3*h*r)/8)+' ');
+       tma:= tma+0.01;
+       a:= tma;
+     end;
+     WriteLn(LineEnding);
 end;
 
 procedure TfrmGraficadora.OPClick(Sender: TObject);
@@ -496,7 +502,7 @@ end;
 procedure TfrmGraficadora.GENClick(Sender: TObject);
 begin
      Resta:= '('+F1.Text+')-('+F2.Text+')';
-     Self.Raices();
+     //Self.Raices();
      FUN.Text:= 'abs(('+F1.Text+')-('+F2.Text+'))';
 end;
 

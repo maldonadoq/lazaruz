@@ -1,10 +1,10 @@
-object frmGraficadora: TfrmGraficadora
-  Left = 200
-  Height = 390
-  Top = 265
+object EDOS: TEDOS
+  Left = 241
+  Height = 418
+  Top = 253
   Width = 1099
   Caption = 'Ecuaciones Diferenciales Ordinarias'
-  ClientHeight = 390
+  ClientHeight = 418
   ClientWidth = 1099
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -12,7 +12,7 @@ object frmGraficadora: TfrmGraficadora
   Scaled = False
   object chrGrafica: TChart
     Left = 600
-    Height = 390
+    Height = 418
     Top = 0
     Width = 499
     AxisList = <    
@@ -79,11 +79,11 @@ object frmGraficadora: TfrmGraficadora
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Height = 390
+    Height = 418
     Top = 0
     Width = 600
     Align = alLeft
-    ClientHeight = 388
+    ClientHeight = 416
     ClientWidth = 598
     TabOrder = 1
     object Panel1: TPanel
@@ -112,17 +112,17 @@ object frmGraficadora: TfrmGraficadora
         Left = 160
         Height = 29
         Top = 104
-        Width = 80
+        Width = 176
         Alignment = taCenter
         BorderSpacing.Around = 2
         TabOrder = 1
-        Text = '[ -0.7; 2 ]'
+        Text = '[ 0; 5 ]'
       end
       object cboxColorFuncion: TColorBox
-        Left = 248
+        Left = 352
         Height = 31
-        Top = 104
-        Width = 88
+        Top = 102
+        Width = 216
         DefaultColorColor = clBlue
         Selected = clBlue
         ItemHeight = 16
@@ -143,7 +143,7 @@ object frmGraficadora: TfrmGraficadora
         Width = 176
         Anchors = [akTop, akRight]
         TabOrder = 4
-        Text = 'sin(exp(x*y))/((2*y)-(x*cos(exp(x*y))))'
+        Text = '(2*exp(x))-y-(2*z)'
       end
       object TN: TLabel
         Left = 16
@@ -172,36 +172,20 @@ object frmGraficadora: TfrmGraficadora
         TabOrder = 5
       end
       object DY: TEdit
-        Left = 40
+        Left = 16
         Height = 29
-        Top = 104
-        Width = 48
+        Top = 102
+        Width = 40
         TabOrder = 6
-        Text = '0.49'
+        Text = '0'
       end
       object DX: TEdit
-        Left = 40
+        Left = 16
         Height = 29
         Top = 59
-        Width = 48
+        Width = 40
         TabOrder = 7
-        Text = '-0.7'
-      end
-      object Label1: TLabel
-        Left = 16
-        Height = 17
-        Top = 64
-        Width = 7
-        Caption = 'X'
-        ParentColor = False
-      end
-      object Label2: TLabel
-        Left = 16
-        Height = 17
-        Top = 104
-        Width = 7
-        Caption = 'Y'
-        ParentColor = False
+        Text = '0'
       end
       object Label3: TLabel
         Left = 120
@@ -217,20 +201,28 @@ object frmGraficadora: TfrmGraficadora
         Top = 59
         Width = 176
         TabOrder = 8
+        Text = '(exp(x)-exp(-x))/2'
       end
-      object DP: TButton
-        Left = 352
+      object XP: TEdit
+        Left = 64
         Height = 29
-        Top = 104
-        Width = 216
-        Caption = 'Dormand-Prince'
-        OnClick = DPClick
+        Top = 59
+        Width = 39
         TabOrder = 9
+        Text = '0'
+      end
+      object YP: TEdit
+        Left = 64
+        Height = 29
+        Top = 102
+        Width = 39
+        TabOrder = 10
+        Text = '1'
       end
     end
     object STRR: TStringGrid
       Left = 0
-      Height = 236
+      Height = 264
       Top = 152
       Width = 598
       Align = alClient

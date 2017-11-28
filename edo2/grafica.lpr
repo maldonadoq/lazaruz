@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, main, tachartlazaruspkg, ParseMath, Newton
+  Forms, main, tachartlazaruspkg, ParseMath, calculadora, funciones, Newton
   { you can add units after this };
 
 {$R *.res}
@@ -15,7 +15,8 @@ uses
 begin
   RequireDerivedFormResource := True;
   Application.Initialize;
-  Application.CreateForm(TfrmGraficadora, frmGraficadora);
+  Application.CreateForm(TEDOS, EDOS);
+  Application.CreateForm(TfrmFunciones, frmFunciones);
   Application.Run;
 end.
 
