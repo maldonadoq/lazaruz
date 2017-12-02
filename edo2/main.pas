@@ -126,16 +126,24 @@ begin
     Funcion.Active:= False;
     Plotear.ShowPoints:= false; PlotearS.ShowPoints:= false;
     Plotear.LinePen.Color:= cboxColorFuncion.Colors[cboxColorFuncion.ItemIndex];
+    PlotearS.LinePen.Color:= cboxColorFuncion.Colors[0];
 
     for i:=1 to STRR.RowCount-1 do begin
        Plotear.AddXY(StrToFloat(STRR.Cells[1,i]), StrToFloat(STRR.Cells[2,i]));
     end;
+
+    if(SOL.Text<>'') then begin
+        for i:=1 to STRR.RowCount-1 do
+            PlotearS.AddXY(StrToFloat(STRR.Cells[1,i]), StrToFloat(STRR.Cells[3,i]));
+    end;
     Plotear.Active:= true;
+    PlotearS.Active:= true;
 end;
 
 procedure TEDOS.Plot();
 begin
  Plotear.Clear;
+ PlotearS.Clear;
  if STRR.RowCount<2 then
     exit;
 
@@ -171,7 +179,7 @@ begin
  STRR.Clear();
  STRR.RowCount:= 2;
  STRR.Cells[0,0]:= 'n';  STRR.Cells[1,0]:= 'x_n';  STRR.Cells[2,0]:= 'metodo';    STRR.Cells[3,0]:= 'real';  STRR.Cells[4,0]:= 'error';
- STRR.Cells[0,1]:= '0';  STRR.Cells[1,1]:= DX.Text;  STRR.Cells[2,1]:= YP.Text;  STRR.Cells[3,1]:= DY.Text;  STRR.Cells[4,1]:= '0';
+ STRR.Cells[0,1]:= '0';  STRR.Cells[1,1]:= DX.Text;  STRR.Cells[2,1]:= DY.Text;  STRR.Cells[3,1]:= DY.Text;  STRR.Cells[4,1]:= '0';
 end;
 
 procedure TEDOS.EUClick(Sender: TObject);

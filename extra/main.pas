@@ -55,6 +55,7 @@ type
     procedure LoadClick(Sender: TObject);
     procedure RunClick(Sender: TObject);
     procedure ShowSol();
+    procedure TxtChange(Sender: TObject);
 
   private
     { private declarations }
@@ -181,6 +182,11 @@ begin
   Senoidal.Text    := Vapx[3].sol; RS.Text  := FloatToStr(Vapx[3].rs);
 end;
 
+procedure TfrmGraficadora.TxtChange(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmGraficadora.FormCreate(Sender: TObject);
 begin
   Parse := TparseMath.Create;
@@ -204,8 +210,8 @@ begin
     Xpr := Xpr + StrToFloat(Data.Cells[0, i]);
     Ypr := Ypr + StrToFloat(Data.Cells[1, i]);
   end;
-  Xpr := Xpr / (Data.RowCount - 1);
-  Ypr := Ypr / (Data.RowCount - 1);
+  Xpr := Xpr / (Data.RowCount-1);
+  Ypr := Ypr / (Data.RowCount-1);
 end;
 
 procedure TfrmGraficadora.RunClick(Sender: TObject);
@@ -213,7 +219,7 @@ begin
   Self.ELineal();
   Self.EExponencial();
   Self.ELogaritmo();
-  Self.ESenoidal();
+  //Self.ESenoidal();
   Self.ShowSol();
 end;
 
@@ -261,7 +267,12 @@ begin
   Ytpr := 0;
   for i := 1 to Data.RowCount - 1 do
   begin
-    tmp[i - 1] := Ln(StrToFloat(Data.Cells[1, i]));
+    if(StrToFloat(Data.Cells[1,i])<= 0) then begin
+      Vapx[1].sol := '';
+      Vapx[1].rs := 0;
+      exit;
+    end;
+    tmp[i - 1] := Ln(StrToFloat(Data.Cells[1,i]));
     Ytpr := Ytpr + tmp[i - 1];
   end;
   Ytpr := Ytpr / Length(tmp);
@@ -291,10 +302,17 @@ begin
   for i:=1 to t do begin
     xtm:= StrTofloat(Data.Cells[0,i]);
     ytm:= StrTofloat(Data.Cells[1,i]);
+    if(xtm<= 0) then begin
+      Vapx[2].sol := '';
+      Vapx[2].rs := 0;
+      exit;
+    end;
     slny:= slny+(Ln(xtm)*ytm);
     sln:= sln+Ln(xtm);
     slnp:= slnp+power(Ln(xtm),2);
   end;
+  WriteLn();
+
   m:= (slny-(Ypr*sln))/(slnp-((sln/t)*sln));
   b:= Ypr-(m*(sln/t));
 
@@ -337,7 +355,7 @@ begin
 
   WriteLn(solc);
   Vapx[3].sol := solc;
-  Vapx[3].rs := Self.R(solc);
+  //Vapx[3].rs := Self.R(solc);
 end;
 
 procedure TfrmGraficadora.EvalClick(Sender: TObject);

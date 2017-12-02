@@ -9,3 +9,7 @@
 *.or
 **/lib/*
 **/backup/*
+*.txt
+*.dat
+*.exe
+*.out

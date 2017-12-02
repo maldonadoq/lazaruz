@@ -1,7 +1,7 @@
 object frmGraficadora: TfrmGraficadora
-  Left = 323
+  Left = 84
   Height = 546
-  Top = 135
+  Top = 175
   Width = 831
   Caption = 'Métodos de Extrapolación'
   ClientHeight = 546
@@ -118,7 +118,7 @@ object frmGraficadora: TfrmGraficadora
         Align = alTop
         BorderSpacing.Around = 2
         TabOrder = 1
-        Text = '[ 0.5; 3 ]'
+        Text = '[ 0; 10 ]'
       end
       object cboxColorFuncion: TColorBox
         Left = 2
@@ -138,6 +138,7 @@ object frmGraficadora: TfrmGraficadora
         Width = 218
         Align = alTop
         BorderSpacing.Around = 2
+        OnChange = TxtChange
         TabOrder = 3
         Text = 'data.txt'
       end

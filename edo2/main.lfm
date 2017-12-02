@@ -1,9 +1,9 @@
 object EDOS: TEDOS
-  Left = 241
+  Left = 204
   Height = 418
-  Top = 253
+  Top = 259
   Width = 1099
-  Caption = 'Ecuaciones Diferenciales Ordinarias'
+  Caption = 'Ecuaciones Diferenciales de 2do Orden'
   ClientHeight = 418
   ClientWidth = 1099
   OnCreate = FormCreate
