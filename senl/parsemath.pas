@@ -168,6 +168,17 @@ begin
 
 end;
 
+Procedure ExprLog10( var Result: TFPExpressionResult; Const Args: TExprParameterArray);
+var
+  x: Double;
+begin
+   x := ArgToFloat( Args[ 0 ] );
+   if IsNumber(x) then
+      Result.resFloat := log10(x)
+   else
+     Result.resFloat := NaN;
+end;
+
 Procedure TParseMath.AddFunctions();
 begin
    with FParser.Identifiers do begin
@@ -180,6 +191,7 @@ begin
        AddFunction('log', 'F', 'F', @ExprLog);
        AddFunction('sqrt', 'F', 'F', @ExprSQRT);
        AddFunction('floor', 'F', 'F', @ExprFloor );
+       AddFunction('log10', 'F', 'F', @ExprLog10 );
        AddFunction('power', 'F', 'FF', @ExprPower); //two arguments 'FF'
    end
 
