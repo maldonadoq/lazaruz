@@ -2,25 +2,26 @@ object Form1: TForm1
   Left = 364
   Height = 509
   Top = 151
-  Width = 200
+  Width = 288
   Caption = 'Serie de Taylor'
   ClientHeight = 509
-  ClientWidth = 200
+  ClientWidth = 288
   LCLVersion = '1.8.0.4'
   object men: TPanel
     Left = 0
     Height = 144
     Top = 0
-    Width = 200
+    Width = 288
     Align = alTop
     ClientHeight = 144
-    ClientWidth = 200
+    ClientWidth = 288
     TabOrder = 0
     object comb: TComboBox
       Left = 24
       Height = 29
       Top = 8
-      Width = 152
+      Width = 240
+      Anchors = [akTop, akLeft, akRight]
       ItemHeight = 0
       Items.Strings = (
         'Sin'
@@ -38,7 +39,8 @@ object Form1: TForm1
       Left = 24
       Height = 32
       Top = 104
-      Width = 152
+      Width = 240
+      Anchors = [akTop, akLeft, akRight]
       Caption = 'Ok'
       OnClick = OkClick
       TabOrder = 1
@@ -47,15 +49,16 @@ object Form1: TForm1
       Left = 24
       Height = 29
       Top = 40
-      Width = 72
+      Width = 104
       TabOrder = 2
       Text = '100'
     end
     object error: TEdit
-      Left = 104
+      Left = 136
       Height = 29
       Top = 40
-      Width = 72
+      Width = 128
+      Anchors = [akTop, akLeft, akRight]
       TabOrder = 3
       Text = '0.001'
     end
@@ -63,7 +66,8 @@ object Form1: TForm1
       Left = 24
       Height = 29
       Top = 72
-      Width = 152
+      Width = 240
+      Anchors = [akTop, akLeft, akRight]
       TabOrder = 4
       Text = '0'
     end
@@ -72,25 +76,27 @@ object Form1: TForm1
     Left = 0
     Height = 365
     Top = 144
-    Width = 200
+    Width = 288
     Align = alClient
     ClientHeight = 363
-    ClientWidth = 198
+    ClientWidth = 286
     TabOrder = 1
     object table: TStringGrid
       Left = 0
       Height = 363
       Top = 0
-      Width = 198
+      Width = 286
       Align = alClient
       AutoFillColumns = True
-      ColCount = 2
+      ColCount = 4
       FixedCols = 0
       RowCount = 1
       TabOrder = 0
       ColWidths = (
-        98
-        98
+        71
+        71
+        71
+        71
       )
     end
   end

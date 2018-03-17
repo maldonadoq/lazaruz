@@ -25,6 +25,7 @@ type
 
     procedure FormCreate(Sender: TObject);
     procedure OkClick(Sender: TObject);
+    procedure Clear;
     procedure Sin(x,h: real; n: integer);
     procedure Cos(x,h: real; n: integer);
     procedure Exp(x,h: real; n: integer);
@@ -50,6 +51,16 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Pi:= 3.141592654;
+end;
+
+procedure TForm1.Clear;
+begin
+  table.Clear;
+  table.RowCount:= 1;
+  table.Cells[0,0]:= 'Value';
+  table.Cells[1,0]:= 'EA';
+  table.Cells[2,0]:= 'ER';
+  table.Cells[3,0]:= 'ERP';
 end;
 
 procedure TForm1.OkClick(Sender: TObject);
@@ -95,6 +106,7 @@ var
 begin
      v:= 1;
      e:= (h+1);
+     Clear;
      while (h<e) do begin
          table.RowCount:= table.RowCount+1;
          rt:= v;
@@ -102,12 +114,28 @@ begin
          e:= abs(v-rt);
          table.Cells[0,i]:= FloatToStr(v);
          table.Cells[1,i]:= FloatToStr(e);
+         table.Cells[2,i]:= FloatToStr(e/v);
+         table.Cells[3,i]:= FloatToStr((e/v)*100);
          i:=i+1;
      end;
 end;
 
 procedure TForm1.Ln(x,h: real; n: integer);
+var
+    i: integer = 1;
+    rt, v, e: real;
 begin
+  v:= 1; e:= (h+1);
+  Clear;
+  if x=0 then begin
+    table.RowCount:= 2;
+    table.Cells[0,1]:= '1'
+  end
+  else if (x>0) and (x<=2) then begin
+    ShowMessage('Taylor Ln!');
+  end
+  else
+    ShowMessage('[ Exp Dom: R ]');
 end;
 
 procedure TForm1.Arctg(x,h: real; n: integer);
